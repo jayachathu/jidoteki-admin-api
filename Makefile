@@ -1,7 +1,7 @@
 # Makefile
 
 # Generic
-.PHONY: all check run-tests html javascript js minify ui docs
+.PHONY: all check run-tests html javascript js minify ui docs java
 
 all: check
 
@@ -19,8 +19,12 @@ javascript:
 js: javascript
 
 minify:
-		head -n 8 docs/ui.js > docs/ui.min.js
+		head -n 8 docs/ui.js | tail -7 > docs/ui.min.js
 		minify docs/ui.js >> docs/ui.min.js
+
+java:
+		cd password-validator && \
+		javac -cp zxcvbn-1.5.2.jar ValidatePasswordStrength.java
 
 docs:
 		cd docs && \

@@ -44,8 +44,19 @@
         (validate-hash Hash)
         (validate-token Token) ]
 
+[de call-strength-validation (Value)
+  (prog
+    (sys "NEW_TOKEN" Value)
+    (call (pack "/usr/local/share/jidoteki-admin-api/password-validator/validate_token_strength.sh"))]
+
+[de validate-password-strength (Value)
+  (if (call-strength-validation Value)
+      NIL
+      (http-msg 400 (pack "Password is too weak."))) ]
+          
 [de update-token (Token)
-  (or (validate-string-range Token 'newtoken *Ascii_codes_printable (1 . 255))
+  (or (validate-string-range Token 'newtoken *Ascii_codes_printable (8 . 255))
+      (validate-password-strength Token 'newtoken)
       (prog
         (out (pack *Upload_path "api.token") (prinl Token))
         (sys "SSH_ORIGINAL_COMMAND" "token")
@@ -60,6 +71,7 @@
 # returns 403 if authentication failed
 # returns 400 if "GET" and "POST" methods are reversed
 # returns NIL otherwise
+
 (de check-auth-request (Method)
  (validate-first-run)
  (if (validate-auth)

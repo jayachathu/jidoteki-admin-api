@@ -1,6 +1,6 @@
 [de MODULE_INFO
   ("name"       "jidoteki-admin-api")
-  ("version"    "1.24.0")
+  ("version"    "1.24.1")
   ("summary"    "On-Prem Admin API")
   ("source"     "https://on-premises.com")
   ("author"     "Alexander Williams")

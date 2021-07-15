@@ -1,9 +1,3 @@
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
-#
-# Copyright (c) 2015-2017 Alexander Williams, Unscramble <license@unscramble.jp>
-
 'use strict'
 apiServer = if window.location.origin?
   window.location.origin
@@ -286,6 +280,10 @@ newTokenButtonListener = ->
 
 tokenButtonListener = ->
   $('#jido-button-token-upload').click ->
+
+    $('.token-form .token-token1-label').parent().removeClass 'has-error'
+    $('.token-form .token-token2-label').parent().removeClass 'has-error'
+    
     pass1 = $('#token1-input').val()
     pass2 = $('#token2-input').val()
 
@@ -295,6 +293,24 @@ tokenButtonListener = ->
       $('.token-form .token-token1-label').focus()
       return
 
+    passwordStrength = zxcvbn(pass1, user_inputs=['password12', 'password@1', 'password@12', 'password@123'])
+
+    unless pass1.length > 8 && pass1.length <= 255
+      $(".token-alert").html 'Invalid API Token. Must be between 8 and 255 characters'
+      $(".token-alert").show()
+      $('.token-form .token-token1-label').parent().addClass 'has-error'
+      $('.token-form .token-token1-label').html 'API Token (required)'
+      $('.token-form .token-token1-label').focus()
+      return
+      
+    unless passwordStrength.score >= 2
+      $(".token-alert").html "API Token is too weak. #{passwordStrength.feedback.warning}"
+      $(".token-alert").show()
+      $('.token-form .token-token1-label').parent().addClass 'has-error'
+      $('.token-form .token-token1-label').html 'API Token (required)'
+      $('.token-form .token-token1-label').focus()
+      return
+      
     unless pass2
       $('.token-form .token-token2-label').parent().addClass 'has-error'
       $('.token-form .token-token2-label').html 'Confirm API Token (required)'
@@ -305,17 +321,8 @@ tokenButtonListener = ->
       $('.token-alert').html 'API Token mismatch. Please verify the API Token.'
       $(".token-alert").show()
       return
-
-    sha256 = getSha256 pass1 if pass1.length > 0 && pass1.length <= 255
-    unless sha256?
-      $(".token-alert").html 'Invalid API Token. Must be between 1 and 255 characters'
-      $(".token-alert").show()
-      $('.token-form .token-token1-label').parent().addClass 'has-error'
-      $('.token-form .token-token1-label').html 'API Token (required)'
-      $('.token-form .token-token2-label').parent().addClass 'has-error'
-      $('.token-form .token-token2-label').html 'Confirm API Token (required)'
-      $('.token-form .token-token1-label').focus()
-      return
+      
+    sha256 = getSha256 pass1
 
     formData = new FormData()
     formData.append 'newtoken', pass1
@@ -348,6 +355,10 @@ tokenButtonListener = ->
 
 setuptokenButtonListener = ->
   $('#jido-button-firstrun-upload').click ->
+
+    $('.token-form .token-token1-label').parent().removeClass 'has-error'
+    $('.token-form .token-token2-label').parent().removeClass 'has-error'
+    
     setup = $('#setuptoken-input').val()
     pass1 = $('#setuptoken1-input').val()
     pass2 = $('#setuptoken2-input').val()
@@ -357,8 +368,26 @@ setuptokenButtonListener = ->
       $('.token-form .token-setuptoken-label').html 'Setup Token (required)'
       $('.token-form .token-setuptoken-label').focus()
       return
-
+    
     unless pass1
+      $('.token-form .token-token1-label').parent().addClass 'has-error'
+      $('.token-form .token-token1-label').html 'API Token (required)'
+      $('.token-form .token-token1-label').focus()
+      return
+
+    passwordStrength = zxcvbn(pass1, user_inputs=['password12', 'password@1', 'password@12', 'password@123'])
+
+    unless pass1.length > 8 && pass1.length <= 255
+      $(".token-alert").html 'Invalid API Token. Must be between 8 and 255 characters'
+      $(".token-alert").show()
+      $('.token-form .token-token1-label').parent().addClass 'has-error'
+      $('.token-form .token-token1-label').html 'API Token (required)'
+      $('.token-form .token-token1-label').focus()
+      return
+
+    unless passwordStrength.score >= 2
+      $(".token-alert").html "API Token is too weak. #{passwordStrength.feedback.warning}"
+      $(".token-alert").show()
       $('.token-form .token-token1-label').parent().addClass 'has-error'
       $('.token-form .token-token1-label').html 'API Token (required)'
       $('.token-form .token-token1-label').focus()
@@ -375,16 +404,7 @@ setuptokenButtonListener = ->
       $(".token-alert").show()
       return
 
-    sha256 = getSha256 pass1 if pass1.length > 0 && pass1.length <= 255
-    unless sha256?
-      $(".token-alert").html 'Invalid API Token. Must be between 1 and 255 characters'
-      $(".token-alert").show()
-      $('.token-form .token-token1-label').parent().addClass 'has-error'
-      $('.token-form .token-token1-label').html 'API Token (required)'
-      $('.token-form .token-token2-label').parent().addClass 'has-error'
-      $('.token-form .token-token2-label').html 'Confirm API Token (required)'
-      $('.token-form .token-token1-label').focus()
-      return
+    sha256 = getSha256 pass1
 
     formData = new FormData()
     formData.append 'newtoken', pass1
