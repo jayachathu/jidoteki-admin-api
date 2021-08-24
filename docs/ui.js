@@ -25,9 +25,9 @@
       oneDay = 24 * 60 * 60 * 1000;
       days = 30;
       date.setTime(+date + (days * oneDay));
-      return document.cookie = `jidoteki-admin-api-token=${sha256}; expires=${date.toGMTString()}; path=/`;
+      return document.cookie = `jidoteki-admin-api-token=${sha256}; secure; expires=${date.toGMTString()}; path=/`;
     } else {
-      return document.cookie = `jidoteki-admin-api-token=${sha256}; path=/`;
+      return document.cookie = `jidoteki-admin-api-token=${sha256}; secure; path=/`;
     }
   };
 

@@ -26,16 +26,16 @@
 
 [de validate-hash (Hash)
   (let (Path      (pack *Admin_path "etc/api.token")
-        Token     (when (num? (car (info Path))) (in Path (line T)))
-        Tokenhash (when Token (get-sha256 Token))
+        Tokenhash     (when (num? (car (info Path))) (in Path (line T)))
         Hmac      (when Tokenhash (get-sha256 (pack (get-http-method) "/" (get-http-url)) Tokenhash)) )
 
     (when Hmac (= Hash Hmac)) ]
 
 [de validate-token (Token)
-  (let Path (pack *Admin_path "etc/api.token")
-    (when (and Token (num? (car (info Path))))
-      (= Token (in Path (line T) ]
+  (let (Path (pack *Admin_path "etc/api.token")
+       Tokenhash (get-sha256 Token))
+    (when (and Tokenhash (num? (car (info Path))))
+      (= Tokenhash (in Path (line T) ]
 
 [de validate-auth ()
   (let (Hash  (get 'hash 'http)
@@ -53,12 +53,13 @@
   (if (call-strength-validation Value)
       NIL
       (http-msg 400 (pack "Password is too weak."))) ]
-          
+
 [de update-token (Token)
   (or (validate-string-range Token 'newtoken *Ascii_codes_printable (8 . 255))
       (validate-password-strength Token 'newtoken)
+      (let Tokenhash (get-sha256 Token)
       (prog
-        (out (pack *Upload_path "api.token") (prinl Token))
+        (out (pack *Upload_path "api.token") (prinl Tokenhash))
         (sys "SSH_ORIGINAL_COMMAND" "token")
         (call (pack *Admin_path "bin/wrapper.sh")) ]
 
