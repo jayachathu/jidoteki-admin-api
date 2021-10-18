@@ -89,10 +89,10 @@
     sha256 = getToken();
     if (sha256 != null) {
       hmac = getHmac(`POST${endpoint}`, sha256);
-      $(`.jido-page-content-${msg} .progress .progress-bar`).removeClass('progress-bar-danger');
-      $(`.jido-page-content-${msg} .progress .progress-bar`).removeClass('progress-bar-primary');
-      $(`.jido-page-content-${msg} .progress .progress-bar`).addClass('progress-bar-striped');
-      $(`.jido-page-content-${msg} .progress .progress-bar`).attr('progress-bar-striped', 33);
+      $(`.jido-page-content-${msg} .progress .progress-bar`).removeClass('bg-danger');
+      $(`.jido-page-content-${msg} .progress .progress-bar`).removeClass('bg-primary');
+      $(`.jido-page-content-${msg} .progress .progress-bar`).addClass('bg-striped');
+      $(`.jido-page-content-${msg} .progress .progress-bar`).attr('bg-striped', 33);
       $(`.jido-page-content-${msg} .progress .progress-bar`).attr('aria-valuenow', 33);
       $(`.jido-page-content-${msg} .progress .progress-bar`).html('....uploading, please wait');
       $(`.jido-page-content-${msg} .progress .progress-bar`).attr('style', 'width: 33%');
@@ -119,16 +119,16 @@
 
   runningUpload = function(msg) {
     $(`.jido-page-content-${msg} .progress`).show();
-    $(`.jido-page-content-${msg} .progress .progress-bar`).addClass('progress-bar-primary');
-    $(`.jido-page-content-${msg} .progress .progress-bar`).attr('progress-bar-striped', 66);
+    $(`.jido-page-content-${msg} .progress .progress-bar`).addClass('bg-primary');
+    $(`.jido-page-content-${msg} .progress .progress-bar`).attr('bg-striped', 66);
     $(`.jido-page-content-${msg} .progress .progress-bar`).attr('aria-valuenow', 66);
     $(`.jido-page-content-${msg} .progress .progress-bar`).html('...updating');
     return $(`.jido-page-content-${msg} .progress .progress-bar`).attr('style', 'width: 66%');
   };
 
   successUpload = function(msg) {
-    $(`.jido-page-content-${msg} .progress .progress-bar`).removeClass('progress-bar-striped');
-    $(`.jido-page-content-${msg} .progress .progress-bar`).addClass('progress-bar-success');
+    $(`.jido-page-content-${msg} .progress .progress-bar`).removeClass('bg-striped');
+    $(`.jido-page-content-${msg} .progress .progress-bar`).addClass('bg-success');
     $(`.jido-page-content-${msg} .progress .progress-bar`).attr('aria-valuenow', 100);
     $(`.jido-page-content-${msg} .progress .progress-bar`).html('done');
     $(`.jido-page-content-${msg} .progress .progress-bar`).attr('style', 'width: 100%');
@@ -137,8 +137,8 @@
   };
 
   failedUpload = function(msg, message) {
-    $(`.jido-page-content-${msg} .progress .progress-bar`).removeClass('progress-bar-striped');
-    $(`.jido-page-content-${msg} .progress .progress-bar`).addClass('progress-bar-danger');
+    $(`.jido-page-content-${msg} .progress .progress-bar`).removeClass('bg-striped');
+    $(`.jido-page-content-${msg} .progress .progress-bar`).addClass('bg-danger');
     $(`.jido-page-content-${msg} .progress .progress-bar`).attr('aria-valuenow', 100);
     $(`.jido-page-content-${msg} .progress .progress-bar`).html(validator.escape(message));
     $(`.jido-page-content-${msg} .progress .progress-bar`).attr('style', 'width: 100%');
@@ -841,6 +841,8 @@
       formData = new FormData();
       formData.append('update', $('#update-input[type=file]')[0].files[0]);
       if (formData) {
+        $('.jido-data-update-status-error-message').html("");
+        $('.jido-data-update-status .label-danger').html("");
         $('.jido-page-content-update .jido-panel').show();
         return putFile('update', "/api/v1/admin/update", formData, function(err, result) {
           if (!err) {

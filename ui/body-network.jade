@@ -1,32 +1,32 @@
 //- This Source Code Form is subject to the terms of the Mozilla Public
 //- License, v. 2.0. If a copy of the MPL was not distributed with this
 //- file, You can obtain one at http://mozilla.org/MPL/2.0/.
-//- 
+//-
 //- Copyright (c) 2015-2017 Alexander Williams, Unscramble <license@unscramble.jp>
 
 // #network container
 #jido-page-network.container-fluid.jido-page-content.jido-page-content-network(style='display:none')
   .row
-    .col-lg-10.col-md-10.col-sm-10.col-lg-offset-1.col-md-offset-1
+    .col-lg-10.col-md-10.col-sm-10.offset-lg-1.offset-md-1
       h1.page-header Network
   .row
-    .col-lg-10.col-md-10.col-sm-12.col-lg-offset-1.col-md-offset-1
-      .panel.panel-default.jido-panel(style='display:none;')
-        .panel-heading
-          h4 Status: 
+    .col-lg-10.col-md-10.col-sm-12.offset-lg-1.offset-md-1
+      .card.jido-panel(style='display:none;')
+        .card-header
+          h4 Status:
             span.label.label-default.jido-data-network-status ...waiting for network settings
           .progress(style='display:none; margin-top: 20px')
-            .progress-bar.progress-bar-striped.active(role='progressbar', aria-valuenow='33', aria-valuemin='0', aria-valuemax='100', style='width: 33%')
+            .progress-bar.bg-striped.active(role='progressbar', aria-valuenow='33', aria-valuemin='0', aria-valuemax='100', style='width: 33%')
               | ...updating, please wait
           .alert.alert-dismissible.alert-success.network-alert(style='display:none;')
   .row
-    .col-lg-10.col-md-10.col-sm-12.col-lg-offset-1.col-md-offset-1
-      .panel.panel-default.jido-panel
-        .panel-heading
-          h3.panel-title
+    .col-lg-10.col-md-10.col-sm-12.offset-lg-1.offset-md-1
+      .card.jido-panel
+        .card-header
+          h3.card-title
             i.fa.icon-sitemap
             |  Network settings
-        .panel-body
+        .card-body
           h4 Update Network settings, or switch between STATIC to DHCP modes.
           .row
             form.network-form(role='form')

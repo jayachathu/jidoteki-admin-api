@@ -36,7 +36,7 @@ getHmac = (string, key) ->
   hmac = forge.hmac.create()
   hmac.start 'sha256', key
   hmac.update string
-  
+
   hmac.digest().toHex()
 
 fetchData = (endpoint, callback) ->
@@ -67,10 +67,10 @@ putFile = (msg, endpoint, file, callback) ->
   if sha256?
     hmac = getHmac "POST#{endpoint}", sha256
 
-    $(".jido-page-content-#{msg} .progress .progress-bar").removeClass 'progress-bar-danger'
-    $(".jido-page-content-#{msg} .progress .progress-bar").removeClass 'progress-bar-primary'
-    $(".jido-page-content-#{msg} .progress .progress-bar").addClass 'progress-bar-striped'
-    $(".jido-page-content-#{msg} .progress .progress-bar").attr 'progress-bar-striped', 33
+    $(".jido-page-content-#{msg} .progress .progress-bar").removeClass 'bg-danger'
+    $(".jido-page-content-#{msg} .progress .progress-bar").removeClass 'bg-primary'
+    $(".jido-page-content-#{msg} .progress .progress-bar").addClass 'bg-striped'
+    $(".jido-page-content-#{msg} .progress .progress-bar").attr 'bg-striped', 33
     $(".jido-page-content-#{msg} .progress .progress-bar").attr 'aria-valuenow', 33
     $(".jido-page-content-#{msg} .progress .progress-bar").html '....uploading, please wait'
     $(".jido-page-content-#{msg} .progress .progress-bar").attr 'style', 'width: 33%'
@@ -93,15 +93,15 @@ putFile = (msg, endpoint, file, callback) ->
 
 runningUpload = (msg) ->
   $(".jido-page-content-#{msg} .progress").show()
-  $(".jido-page-content-#{msg} .progress .progress-bar").addClass 'progress-bar-primary'
-  $(".jido-page-content-#{msg} .progress .progress-bar").attr 'progress-bar-striped', 66
+  $(".jido-page-content-#{msg} .progress .progress-bar").addClass 'bg-primary'
+  $(".jido-page-content-#{msg} .progress .progress-bar").attr 'bg-striped', 66
   $(".jido-page-content-#{msg} .progress .progress-bar").attr 'aria-valuenow', 66
   $(".jido-page-content-#{msg} .progress .progress-bar").html '...updating'
   $(".jido-page-content-#{msg} .progress .progress-bar").attr 'style', 'width: 66%'
 
 successUpload = (msg) ->
-  $(".jido-page-content-#{msg} .progress .progress-bar").removeClass 'progress-bar-striped'
-  $(".jido-page-content-#{msg} .progress .progress-bar").addClass 'progress-bar-success'
+  $(".jido-page-content-#{msg} .progress .progress-bar").removeClass 'bg-striped'
+  $(".jido-page-content-#{msg} .progress .progress-bar").addClass 'bg-success'
   $(".jido-page-content-#{msg} .progress .progress-bar").attr 'aria-valuenow', 100
   $(".jido-page-content-#{msg} .progress .progress-bar").html 'done'
   $(".jido-page-content-#{msg} .progress .progress-bar").attr 'style', 'width: 100%'
@@ -109,8 +109,8 @@ successUpload = (msg) ->
   $(".#{msg}-alert").hide()
 
 failedUpload = (msg, message) ->
-  $(".jido-page-content-#{msg} .progress .progress-bar").removeClass 'progress-bar-striped'
-  $(".jido-page-content-#{msg} .progress .progress-bar").addClass 'progress-bar-danger'
+  $(".jido-page-content-#{msg} .progress .progress-bar").removeClass 'bg-striped'
+  $(".jido-page-content-#{msg} .progress .progress-bar").addClass 'bg-danger'
   $(".jido-page-content-#{msg} .progress .progress-bar").attr 'aria-valuenow', 100
   $(".jido-page-content-#{msg} .progress .progress-bar").html validator.escape(message)
   $(".jido-page-content-#{msg} .progress .progress-bar").attr 'style', 'width: 100%'
@@ -283,7 +283,7 @@ tokenButtonListener = ->
 
     $('.token-form .token-token1-label').parent().removeClass 'has-error'
     $('.token-form .token-token2-label').parent().removeClass 'has-error'
-    
+
     pass1 = $('#token1-input').val()
     pass2 = $('#token2-input').val()
 
@@ -302,7 +302,7 @@ tokenButtonListener = ->
       $('.token-form .token-token1-label').html 'API Token (required)'
       $('.token-form .token-token1-label').focus()
       return
-      
+
     unless passwordStrength.score >= 2
       $(".token-alert").html "API Token is too weak. #{passwordStrength.feedback.warning}"
       $(".token-alert").show()
@@ -310,7 +310,7 @@ tokenButtonListener = ->
       $('.token-form .token-token1-label').html 'API Token (required)'
       $('.token-form .token-token1-label').focus()
       return
-      
+
     unless pass2
       $('.token-form .token-token2-label').parent().addClass 'has-error'
       $('.token-form .token-token2-label').html 'Confirm API Token (required)'
@@ -321,7 +321,7 @@ tokenButtonListener = ->
       $('.token-alert').html 'API Token mismatch. Please verify the API Token.'
       $(".token-alert").show()
       return
-      
+
     sha256 = getSha256 pass1
 
     formData = new FormData()
@@ -358,7 +358,7 @@ setuptokenButtonListener = ->
 
     $('.token-form .token-token1-label').parent().removeClass 'has-error'
     $('.token-form .token-token2-label').parent().removeClass 'has-error'
-    
+
     setup = $('#setuptoken-input').val()
     pass1 = $('#setuptoken1-input').val()
     pass2 = $('#setuptoken2-input').val()
@@ -368,7 +368,7 @@ setuptokenButtonListener = ->
       $('.token-form .token-setuptoken-label').html 'Setup Token (required)'
       $('.token-form .token-setuptoken-label').focus()
       return
-    
+
     unless pass1
       $('.token-form .token-token1-label').parent().addClass 'has-error'
       $('.token-form .token-token1-label').html 'API Token (required)'

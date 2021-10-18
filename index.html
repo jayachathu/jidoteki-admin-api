@@ -14,19 +14,19 @@
     <!-- UI CSS-->
     <link href="/docs/ui.css?v=1.24.0" rel="stylesheet">
   </head>
-  <body>
+  <body class="jido-body">
     <div id="jido-page-navbar" style="display:none">
       <ul id="jido-health-bar" class="breadcrumb text-right"></ul>
-      <nav class="navbar navbar-default navbar-static-top">
+      <div id="jido-nav-bar" style="background-color:#2fa4e7; border-color: #1995dc" class="nav navbar navbar-light navbar-expand-sm navbar-static-top navbar-bg-jido">
         <div class="container">
           <div class="navbar-header">
-            <button type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="navbar-brand">Admin Dashboard</a>
+            <button type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" class="navbar-toggler collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="navbar-brand nav-bar-text">Admin Dashboard</a>
           </div>
           <div id="bs-example-navbar-collapse-1" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li id="jido-button-home" class="active"><a href="#"><i class="fa icon-home"></i> Home</a></li>
-              <li id="jido-button-update"><a href="#"><i class="fa icon-upload-cloud"></i> Update</a></li>
-              <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa icon-cog-alt"></i> Settings<span class="caret"></span></a>
+              <li id="jido-button-home" class="nav-item active"><a href="#" class="nav-link"><i class="fa icon-home"></i> Home</a></li>
+              <li id="jido-button-update" class="nav-item"><a href="#" class="nav-link"><i class="fa icon-upload-cloud"></i> Update</a></li>
+              <li class="dropdown nav-item"><a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle nav-link"><i class="fa icon-cog-alt"></i> Settings<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li id="jido-button-backup" style="display:none;"><a href="#"><i class="fa icon-floppy"></i> Backup/Restore</a></li>
                   <li id="jido-button-settings" style="display:none;"><a href="#"><i class="fa icon-sitemap"></i> Network</a></li>
@@ -36,47 +36,49 @@
                   <li id="jido-button-token"><a href="#"><i class="fa icon-user"></i> API Token</a></li>
                 </ul>
               </li>
-              <li id="jido-button-monitor"><a href="#"><i class="fa icon-gauge"></i> Monitor</a></li>
-              <li id="jido-button-support"><a href="#"><i class="fa icon-lifebuoy"></i> Support</a></li>
+              <li id="jido-button-monitor" class="nav-item"><a href="#" class="nav-link"><i class="fa icon-gauge"></i> Monitor</a></li>
+              <li id="jido-button-support" class="nav-item"><a href="#" class="nav-link"><i class="fa icon-lifebuoy"></i> Support</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li class="jido-versions"><span class="badge jido-data-platform-version">...fetching</span></li>
-              <li><a id="jido-button-logout" href="#"><i class="fa icon-logout"></i> Logout</a></li>
-              <li><a id="jido-button-restart" href="#" data-toggle="modal" data-target="#jido-modal-restart"> <i class="fa icon-off"></i> Restart</a></li>
+            <ul class="nav navbar-nav ml-auto">
+              <li class="jido-versions nav-item">
+                <label class="badge-pill jido-data-platform-version">...fetching</label>
+              </li>
+              <li class="nav-item"><a id="jido-button-logout" href="#" class="nav-link"><i class="fa icon-logout"></i> Logout</a></li>
+              <li class="nav-item"><a id="jido-button-restart" href="#" data-toggle="modal" data-target="#jido-modal-restart" class="nav-link"><i class="fa icon-off"></i> Restart</a></li>
             </ul>
           </div>
         </div>
-      </nav>
+      </div>
     </div>
     <div style="display:none;" class="alert alert-danger restart-alert">System is restarting. Please Refresh the page in 1 minute.</div>
     <!-- #firstrun container-->
     <div id="jido-page-firstrun" style="display:none" class="container-fluid jido-page-content jido-page-content-firstrun">
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-10 col-lg-offset-1 col-md-offset-1">
+        <div class="col-lg-10 col-md-10 col-sm-10 offset-lg-1 offset-md-1">
           <h1 class="page-header">First Run</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-lg-offset-3 col-md-offset-3">
-          <div style="display:none;" class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h4>Status: <span class="label label-default jido-data-firstrun-status">...waiting for setup token</span></h4>
+        <div class="col-lg-6 col-md-6 col-sm-12 offset-lg-3 offset-md-3">
+          <div style="display:none;" class="card jido-panel">
+            <div class="card-header">
+              <h4>Status:<span class="label label-default jido-data-firstrun-status">...waiting for setup token</span></h4>
               <div style="display:none; margin-top: 20px" class="progress">
-                <div role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%" class="progress-bar progress-bar-striped active">...updating, please wait</div>
+                <div role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%" class="progress-bar bg-striped active">...updating, please wait</div>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-lg-offset-3 col-md-offset-3">
-          <div class="panel panel-default jido-panel jido-panel-network">
-            <div class="panel-body">Set your new<em> API Token</em> below.<br><br>
+        <div class="col-lg-6 col-md-6 col-sm-12 offset-lg-3 offset-md-3">
+          <div class="card jido-panel jido-panel-network">
+            <div class="card-body">Set your new<em> API Token</em> below.<br><br>
               <div style="display:none;" class="alert alert-danger token-alert">API Token mismatch. Please verify the API Token.</div>
               <div class="row">
                 <form role="form" autocomplete="off" class="token-form">
                   <fieldset>
-                    <div class="col-lg-8 col-md-8 col-sm-8 col-md-offset-2">
+                    <div class="col-lg-8 col-md-8 col-sm-8 offset-md-2">
                       <div class="form-group has-success">
                         <label for="setuptoken-input" class="control-label token-setuptoken-label">Setup Token</label>
                         <input id="setuptoken-input" placeholder="Setup Token" name="setuptoken" type="text" class="form-control">
@@ -105,13 +107,13 @@
     <!-- #login container-->
     <div id="jido-page-login" style="display:none" class="container-fluid">
       <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+        <div class="col-md-4 offset-md-4">
           <div id="invalid-token" style="display:none" class="alert alert-danger">Missing or invalid API token</div>
-          <div class="login-panel panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Admin Dashboard Login</h3>
+          <div class="login-panel card">
+            <div class="card-header">
+              <h3 class="card-title">Admin Dashboard Login</h3>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
               <form id="login-form" role="form" autocomplete="off">
                 <fieldset>
                   <div class="form-group">
@@ -126,7 +128,7 @@
                 </fieldset>
               </form>
             </div>
-          </div><a id="new-token" href="#" class="pull-right"><i class="fa icon-user-plus"></i> API Token Setup</a>
+          </div><a id="new-token" href="#" class="float-right"><i class="fa icon-user-plus"></i> API Token Setup</a>
         </div>
       </div>
     </div>
@@ -134,47 +136,47 @@
     <!-- #dashboard container-->
     <div id="jido-page-dashboard" style="display:none" class="container-fluid jido-page-content">
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-10 col-lg-offset-1 col-md-offset-1">
+        <div class="col-lg-10 col-md-10 col-sm-10 offset-md-1 offset-lg-1">
           <h1 class="page-header">Dashboard</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-5 col-md-5 col-sm-12 col-lg-offset-1 col-md-offset-1">
-          <div class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa icon-sitemap"></i> Network details</h3>
+        <div class="col-lg-5 col-md-5 col-sm-12 offset-lg-1 offset-md-1">
+          <div class="card jido-panel">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fa icon-sitemap"></i> Network details</h3>
             </div>
-            <ul class="list-group jido-data-network-info panel-body">...fetching</ul>
+            <ul class="list-group jido-data-network-info card-body">...fetching</ul>
           </div>
         </div>
         <div class="col-lg-5 col-md-5 col-sm-12">
-          <div class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa icon-sliders"></i> Service status</h3>
+          <div class="card jido-panel">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fa icon-sliders"></i> Service status</h3>
             </div>
-            <ul class="list-group jido-data-services-info panel-body">...fetching</ul>
+            <ul class="list-group jido-data-services-info card-body">...fetching</ul>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-12 col-lg-offset-1 col-md-offset-1">
-          <div class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa icon-doc-text"></i> Change log</h3>
+        <div class="col-lg-10 col-md-10 col-sm-12 offset-lg-1 offset-md-1">
+          <div class="card jido-panel">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fa icon-doc-text"></i> Change log</h3>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
               <pre class="jido-info jido-data-changelog">...fetching</pre>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-lg-offset-1 col-md-offset-2">
-          <div style="display:none;" class="panel panel-default jido-panel-license">
-            <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa icon-certificate"></i> License</h3>
+        <div class="col-lg-4 col-md-4 col-sm-12 offset-lg-1 offset-md-2">
+          <div style="display:none;" class="card jido-panel-license">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fa icon-certificate"></i> License</h3>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
               <ul class="list-group jido-data-license-info">...fetching</ul>
             </div>
           </div>
@@ -185,30 +187,30 @@
     <!-- #update container-->
     <div id="jido-page-update" style="display:none" class="container-fluid jido-page-content jido-page-content-update">
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-10 col-lg-offset-1 col-md-offset-1">
+        <div class="col-lg-10 col-md-10 col-sm-10 offset-lg-1 offset-md-1">
           <h1 class="page-header">Update</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-12 col-lg-offset-1 col-md-offset-1">
-          <div style="display:none;" class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h4>Status: <span class="label label-default jido-data-update-status">...fetching</span><span style="display:none;" class="pull-right jido-data-update-status-error">
+        <div class="col-lg-10 col-md-10 col-sm-12 offset-lg-1 offset-md-1">
+          <div style="display:none;" class="card jido-panel">
+            <div class="card-header">
+              <h4>Status:<span class="label label-default jido-data-update-status">...fetching</span><span style="display:none;" class="float-right jido-data-update-status-error">
                   <div class="jido-data-update-status-error-message text-danger"></div></span></h4>
               <div style="display:none; margin-top: 20px; margin-bottom:0;" class="progress">
-                <div role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%" class="progress-bar progress-bar-striped active">...uploading, please wait</div>
+                <div role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%" class="progress-bar bg-striped active">...uploading, please wait</div>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-lg-offset-1 col-md-offset-1">
-          <div class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa icon-upload-cloud"></i> Update</h3>
+        <div class="col-lg-4 col-md-4 col-sm-12 offset-lg-1 offset-md-1">
+          <div class="card jido-panel">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fa icon-upload-cloud"></i> Update</h3>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
               <h4>Upload a software update package to keep the system up-to-date.</h4>
               <blockquote><span class="text-muted">Example</span><br><em>software_package-v1.2.3.enc</em></blockquote>
               <div style="display:none;" class="alert alert-info update-alert">The status and log will update automatically.</div>
@@ -224,22 +226,22 @@
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12">
-          <div class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa icon-doc-text"></i> Update log (last 10 lines)</h3>
+          <div class="card jido-panel">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fa icon-doc-text"></i> Update log (last 10 lines)</h3>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
               <pre class="jido-info jido-data-update-log">...fetching</pre>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-12 col-lg-offset-1 col-md-offset-1">
-          <div class="panel panel-default jido-panel">
-            <div class="list-group"><a id="jido-button-update-fulllog" href="#" class="list-group-item"><i class="fa icon-doc-text"></i> Show full update log <i class="fa icon-right-circled pull-right"></i></a></div>
-            <div style="display:none" class="panel-body">
-              <pre class="jido-info jido-data-update-full-log"> </pre>
+        <div class="col-lg-10 col-md-10 col-sm-12 offset-lg-1 offset-md-1">
+          <div class="card jido-panel">
+            <div class="list-group"><a id="jido-button-update-fulllog" href="#" class="list-group-item"><i class="fa icon-doc-text"></i> Show full update log<i class="fa icon-right-circled float-right"></i></a></div>
+            <div style="display:none" class="card-body">
+              <pre class="jido-info jido-data-update-full-log"></pre>
             </div>
           </div>
         </div>
@@ -249,17 +251,17 @@
     <!-- #network container-->
     <div id="jido-page-network" style="display:none" class="container-fluid jido-page-content jido-page-content-network">
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-10 col-lg-offset-1 col-md-offset-1">
+        <div class="col-lg-10 col-md-10 col-sm-10 offset-lg-1 offset-md-1">
           <h1 class="page-header">Network</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-12 col-lg-offset-1 col-md-offset-1">
-          <div style="display:none;" class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h4>Status: <span class="label label-default jido-data-network-status">...waiting for network settings</span></h4>
+        <div class="col-lg-10 col-md-10 col-sm-12 offset-lg-1 offset-md-1">
+          <div style="display:none;" class="card jido-panel">
+            <div class="card-header">
+              <h4>Status:<span class="label label-default jido-data-network-status">...waiting for network settings</span></h4>
               <div style="display:none; margin-top: 20px" class="progress">
-                <div role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%" class="progress-bar progress-bar-striped active">...updating, please wait</div>
+                <div role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%" class="progress-bar bg-striped active">...updating, please wait</div>
               </div>
               <div style="display:none;" class="alert alert-dismissible alert-success network-alert"></div>
             </div>
@@ -267,12 +269,12 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-12 col-lg-offset-1 col-md-offset-1">
-          <div class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa icon-sitemap"></i> Network settings</h3>
+        <div class="col-lg-10 col-md-10 col-sm-12 offset-lg-1 offset-md-1">
+          <div class="card jido-panel">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fa icon-sitemap"></i> Network settings</h3>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
               <h4>Update Network settings, or switch between STATIC to DHCP modes.</h4>
               <div class="row">
                 <form role="form" class="network-form">
@@ -338,29 +340,29 @@
     <!-- #certs container-->
     <div id="jido-page-certs" style="display:none" class="container-fluid jido-page-content jido-page-content-certs">
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-10 col-lg-offset-1 col-md-offset-1">
+        <div class="col-lg-10 col-md-10 col-sm-10 offset-lg-1 offset-md-1">
           <h1 class="page-header">TLS Certificates</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-12 col-lg-offset-1 col-md-offset-1">
-          <div style="display:none;" class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h4>Status: <span class="label label-default jido-data-certs-status">...fetching</span></h4>
+        <div class="col-lg-10 col-md-10 col-sm-12 offset-lg-1 offset-md-1">
+          <div style="display:none;" class="card jido-panel">
+            <div class="card-heading">
+              <h4>Status:<span class="label label-default jido-data-certs-status">...fetching</span></h4>
               <div style="display:none; margin-top: 20px" class="progress">
-                <div role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%" class="progress-bar progress-bar-striped active">...uploading, please wait</div>
+                <div role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%" class="progress-bar bg-striped active">...uploading, please wait</div>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-lg-offset-1 col-md-offset-1">
-          <div class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa icon-lock"></i> TLS Certificates</h3>
+        <div class="col-lg-4 col-md-4 col-sm-12 offset-lg-1 offset-md-1">
+          <div class="card jido-panel">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fa icon-lock"></i> TLS Certificates</h3>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
               <h4>Upload TLS certificates to replace the default self-signed certificates.</h4>
               <blockquote><span class="text-muted">Example</span><br><em>enterprise.pem, enterprise.key, enterprise-cacert.pem</em></blockquote>
               <div style="display:none;" class="alert alert-dismissible alert-info certs-alert">
@@ -369,15 +371,15 @@
               <form role="form" class="certs-form">
                 <fieldset>
                   <div class="form-group">
-                    <label for="public-key-input" class="control-label">Public Certificate (PEM) <a href="#" data-toggle="modal" data-target="#jido-modal-certs-pem"><i class="fa icon-info-circled"></i></a></label>
+                    <label for="public-key-input" class="control-label">Public Certificate (PEM)<a href="#" data-toggle="modal" data-target="#jido-modal-certs-pem"><i class="fa icon-info-circled"></i></a></label>
                     <input id="public-key-input" placeholder="TLS Public Certificate" name="public_key" type="file" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label for="private-key-input" class="control-label">Private Key (RSA un-encrypted) <a href="#" data-toggle="modal" data-target="#jido-modal-certs-rsa"><i class="fa icon-info-circled"></i></a></label>
+                    <label for="private-key-input" class="control-label">Private Key (RSA un-encrypted)<a href="#" data-toggle="modal" data-target="#jido-modal-certs-rsa"><i class="fa icon-info-circled"></i></a></label>
                     <input id="private-key-input" placeholder="TLS Private Key" name="private_key" type="file" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label for="ca-key-input" class="control-label"><em>CA Certificate (PEM optional) </em><a href="#" data-toggle="modal" data-target="#jido-modal-certs-pem"><i class="fa icon-info-circled"></i></a></label>
+                    <label for="ca-key-input" class="control-label"><em>CA Certificate (PEM optional)</em><a href="#" data-toggle="modal" data-target="#jido-modal-certs-pem"><i class="fa icon-info-circled"></i></a></label>
                     <input id="ca-key-input" placeholder="TLS CA Root/Intermediate Certificate" name="ca_key" type="file" class="form-control">
                   </div>
                   <input id="jido-button-certs-upload" type="submit" value="Upload" onclick="return event.preventDefault();" class="btn btn-lg btn-primary btn-block">
@@ -387,11 +389,11 @@
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12">
-          <div class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa icon-doc-text"></i> TLS Certificates log (last 10 lines)</h3>
+          <div class="card jido-panel">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fa icon-doc-text"></i> TLS Certificates log (last 10 lines)</h3>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
               <pre class="jido-info jido-data-certs-log">...fetching</pre>
             </div>
           </div>
@@ -402,16 +404,16 @@
     <!-- #storage container-->
     <div id="jido-page-storage" style="display:none" class="container-fluid jido-page-content jido-page-content-storage">
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-12 col-lg-offset-1 col-md-offset-1">
+        <div class="col-lg-10 col-md-10 col-sm-12 offset-lg-1 offset-md-1">
           <h1 class="page-header">Storage</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-12 col-lg-offset-1 col-md-offset-1">
-          <div style="display:none;" class="panel panel-default jido-panel">
-            <div class="panel-heading">
+        <div class="col-lg-10 col-md-10 col-sm-12 offset-lg-1 offset-md-1">
+          <div style="display:none;" class="card jido-panel">
+            <div class="card-header">
               <div style="margin-top: 20px" class="progress">
-                <div role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%" class="progress-bar progress-bar-striped active">...uploading, please wait</div>
+                <div role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%" class="progress-bar bg-striped active">...uploading, please wait</div>
               </div>
               <div style="display:none;" class="alert alert-dismissible alert-success storage-alert"></div>
             </div>
@@ -419,12 +421,12 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-lg-offset-1 col-md-offset-1">
-          <div class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa icon-database"></i> Storage settings</h3>
+        <div class="col-lg-4 col-md-4 col-sm-12 offset-lg-1 offset-md-1">
+          <div class="card jido-panel">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fa icon-database"></i> Storage settings</h3>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
               <h4>Select Storage type and configure Settings for persistent data.</h4><br>
               <div class="alert alert-info">All form fields are required</div>
               <div class="row">
@@ -500,30 +502,30 @@
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12">
-          <div class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa icon-info-circled"></i> Information</h3>
+          <div class="card jido-panel">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fa icon-info-circled"></i> Information</h3>
             </div>
-            <div id="storageHelp" class="panel-body">
+            <div id="storageHelp" class="card-body">
                   <div id="storage-help-local" style="display:none;">
                     <h4>Local (disk)</h4>
                     <p>This is the default setting.</p>
-                    <p>Data is stored locally on the 2nd disk, in an LVM partition mounted to <code> /data</code>.</p>
+                    <p>Data is stored locally on the 2nd disk, in an LVM partition mounted to<code> /data</code>.</p>
                   </div>
                   <div id="storage-help-nfs" style="display:none;">
                     <h4>NFS</h4>
                     <p>Network File System (NFS) storage provides a multitude of configuration options.</p>
-                    <p>NFS <code>Mount options</code> are fully listed and described in the <a href="https://linux.die.net/man/5/nfs">nfs(5)</a> man page (external link).</p>
+                    <p>NFS<code>Mount options</code> are fully listed and described in the<a href="https://linux.die.net/man/5/nfs">nfs(5)</a> man page (external link).</p>
                   </div>
                   <div id="storage-help-aoe" style="display:none;">
                     <h4>AoE (ATA-over-Ethernet)</h4>
                     <p>AoE storage provides block storage over ethernet.</p>
-                    <p>The AoE<code>Device</code> is a block device defined by the target server, as described in the <a href="https://linux.die.net/man/8/aoe-stat">aoe-stat(8)</a> man page (external link).</p>
+                    <p>The AoE<code>Device</code> is a block device defined by the target server, as described in the<a href="https://linux.die.net/man/8/aoe-stat">aoe-stat(8)</a> man page (external link).</p>
                   </div>
                   <div id="storage-help-iscsi" style="display:none;">
                     <h4>iSCSI</h4>
                     <p>iSCSI storage provides a SCSI interface over TCP.</p>
-                    <p>The iSCSI<code>Target</code> is described in the <a href="https://linux.die.net/man/8/iscsiadm">iscsiadm(8)</a> man page (external link).</p>
+                    <p>The iSCSI<code>Target</code> is described in the<a href="https://linux.die.net/man/8/iscsiadm">iscsiadm(8)</a> man page (external link).</p>
                   </div>
                   <div id="storage-help-nbd" style="display:none;">
                     <h4>NBD</h4>
@@ -538,31 +540,31 @@
     <!-- #token container-->
     <div id="jido-page-token" style="display:none" class="container-fluid jido-page-content jido-page-content-token">
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-10 col-lg-offset-1 col-md-offset-1">
+        <div class="col-lg-10 col-md-10 col-sm-10 offset-lg--1 offset-md-1">
           <h1 class="page-header">API Token</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-lg-offset-3 col-md-offset-3">
-          <div style="display:none;" class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h4>Status: <span class="label label-default jido-data-token-status">...waiting for token</span></h4>
+        <div class="col-lg-6 col-md-6 col-sm-12 offset-lg-3 offset-md-3">
+          <div style="display:none;" class="card jido-panel">
+            <div class="card-header">
+              <h4>Status:<span class="label label-default jido-data-token-status">...waiting for token</span></h4>
               <div style="display:none; margin-top: 20px" class="progress">
-                <div role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%" class="progress-bar progress-bar-striped active">...updating, please wait</div>
+                <div role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%" class="progress-bar bg-striped active">...updating, please wait</div>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-lg-offset-3 col-md-offset-3">
-          <div class="panel panel-default jido-panel jido-panel-network">
-            <div class="panel-body">Set your new<em> API Token</em> below.<br><br>
+        <div class="col-lg-6 col-md-6 col-sm-12 offset-lg-3 offset-md-3">
+          <div class="card jido-panel jido-panel-network">
+            <div class="card-body">Set your new<em> API Token</em> below.<br><br>
               <div style="display:none;" class="alert alert-danger token-alert">API Token mismatch. Please verify the API Token.</div>
               <div class="row">
                 <form role="form" autocomplete="off" class="token-form">
                   <fieldset>
-                    <div class="col-lg-8 col-md-8 col-sm-8 col-md-offset-2">
+                    <div class="col-lg-8 col-md-8 col-sm-8 offset-md-2">
                       <div class="form-group has-success">
                         <label for="token1-input" class="control-label token-token1-label">API Token</label>
                         <input id="token1-input" placeholder="API Token" name="token1" type="password" class="form-control">
@@ -587,12 +589,12 @@
     <!-- #support container-->
     <div id="jido-page-support" style="display:none" class="container-fluid jido-page-content">
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-10 col-lg-offset-1 col-md-offset-1">
+        <div class="col-lg-10 col-md-10 col-sm-10 offset-lg-1 offset-md-1">
           <h1 class="page-header">Support</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-12 col-lg-offset-1 col-md-offset-1">
+        <div class="col-lg-10 col-md-10 col-sm-12 offset-lg-1 offset-md-1">
           <h4>Download</h4>
           <div class="list-group"><a id="jido-data-logs-files" href="#" class="list-group-item">
               <h4 class="list-group-item-heading"><i class="fa icon-file-archive"></i> Log files (logs.tar.gz)</h4>
@@ -610,10 +612,10 @@
     <!-- #monitor container-->
     <div id="jido-page-monitor" style="display:none" class="container-fluid jido-page-content">
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-12 col-lg-offset-1 col-md-offset-1">
+        <div class="col-lg-10 col-md-10 col-sm-12 offset-lg-1 offset-md-1">
           <div class="page-header">
             <h1 style="display:inline;">Monitor system health</h1>
-            <div style="display:inline;" class="pull-right">
+            <div style="display:inline;" class="float-right">
               <ul id="jido-monitor-duration" class="pagination pagination-md">
                 <li class="jido-duration-1h active"><a href="#" duration="1h">1 hour</a></li>
                 <li class="jido-duration-1d"><a href="#" duration="1d">1 day</a></li>
@@ -627,44 +629,44 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-5 col-md-5 col-sm-12 col-lg-offset-1 col-md-offset-1">
-          <div class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h3 class="panel-title"> CPU load</h3>
+        <div class="col-lg-5 col-md-5 col-sm-12 offset-lg-1 offset-md-1">
+          <div class="card jido-panel">
+            <div class="card-header">
+              <h3 class="card-title"> CPU load</h3>
             </div>
-            <div class="panel-body jido-monitor">
+            <div class="card-body jido-monitor">
               <canvas id="svgload"></canvas>
             </div>
           </div>
         </div>
         <div class="col-lg-5 col-md-5 col-sm-12">
-          <div class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h3 class="panel-title"> Memory usage</h3>
+          <div class="card jido-panel">
+            <div class="card-header">
+              <h3 class="card-title"> Memory usage</h3>
             </div>
-            <div class="panel-body jido-monitor">
+            <div class="card-body jido-monitor">
               <canvas id="svgmemory"></canvas>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-5 col-md-5 col-sm-12 col-lg-offset-1 col-md-offset-1">
-          <div class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h3 class="panel-title"> Network traffic</h3>
+        <div class="col-lg-5 col-md-5 col-sm-12 offset-lg-1 offset-md-1">
+          <div class="card jido-panel">
+            <div class="card-header">
+              <h3 class="card-title"> Network traffic</h3>
             </div>
-            <div class="panel-body jido-monitor">
+            <div class="card-body jido-monitor">
               <canvas id="svgnetwork"></canvas>
             </div>
           </div>
         </div>
         <div class="col-lg-5 col-md-5 col-sm-12">
-          <div class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h3 class="panel-title"> Disk usage</h3>
+          <div class="card jido-panel">
+            <div class="card-header">
+              <h3 class="card-title"> Disk usage</h3>
             </div>
-            <div class="panel-body jido-monitor">
+            <div class="card-body jido-monitor">
               <canvas id="svgdisk"></canvas>
             </div>
           </div>
@@ -675,17 +677,17 @@
     <!-- #backup container-->
     <div id="jido-page-backup" style="display:none" class="container-fluid jido-page-content jido-page-content-backup">
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-12 col-lg-offset-1 col-md-offset-1">
+        <div class="col-lg-10 col-md-10 col-sm-12 offset-lg-1 offset-md-1">
           <h1 class="page-header">Backup/Restore</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-12 col-lg-offset-1 col-md-offset-1">
-          <div style="display:none;" class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h4>Status: <span class="label label-default jido-data-backup-status">...waiting for backup</span></h4>
+        <div class="col-lg-10 col-md-10 col-sm-12 offset-lg-1 offset-md-1">
+          <div style="display:none;" class="card jido-panel">
+            <div class="card-header">
+              <h4>Status:<span class="label label-default jido-data-backup-status">...waiting for backup</span></h4>
               <div style="display:none; margin-top: 20px" class="progress">
-                <div role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%" class="progress-bar progress-bar-striped active">...uploading, please wait</div>
+                <div role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%" class="progress-bar bg-striped active">...uploading, please wait</div>
               </div>
               <div style="display:none;" class="alert alert-dismissible alert-success backup-alert"></div>
             </div>
@@ -693,12 +695,12 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-lg-offset-1 col-md-offset-1">
-          <div class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa icon-floppy"></i> Backup action</h3>
+        <div class="col-lg-4 col-md-4 col-sm-12 offset-lg-1 offset-md-1">
+          <div class="card jido-panel">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fa icon-floppy"></i> Backup action</h3>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
               <h4>Create, cancel, download, or restore a Backup archive.</h4><br>
               <form role="form" class="backup-form">
                 <fieldset>
@@ -721,11 +723,11 @@
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12">
-          <div class="panel panel-default jido-panel">
-            <div class="panel-heading">
-              <h3 class="panel-title"><i class="fa icon-info-circled"></i> Information</h3>
+          <div class="card jido-panel">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fa icon-info-circled"></i> Information</h3>
             </div>
-            <div id="backupInfo" style="display:none;" class="panel-body">
+            <div id="backupInfo" style="display:none;" class="card-body">
               <h4>Download</h4>
               <div class="list-group"><a id="jido-data-backup-file" href="#" class="list-group-item">
                   <h4 class="list-group-item-heading"><i class="fa icon-file-archive"></i> Backup files (backup.tar)</h4></a></div>
@@ -832,7 +834,7 @@ GEs=
     <!-- This Source Code Form is subject to the terms of the Mozilla Public-->
     <!-- License, v. 2.0. If a copy of the MPL was not distributed with this-->
     <!-- file, You can obtain one at http://mozilla.org/MPL/2.0/.-->
-    <!-- -->
+    <!---->
     <!-- Copyright (c) 2015-2017 Alexander Williams, Unscramble <license@unscramble.jp>-->
   </body>
 </html>
