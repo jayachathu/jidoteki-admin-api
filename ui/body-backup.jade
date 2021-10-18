@@ -1,33 +1,33 @@
 //- This Source Code Form is subject to the terms of the Mozilla Public
 //- License, v. 2.0. If a copy of the MPL was not distributed with this
 //- file, You can obtain one at http://mozilla.org/MPL/2.0/.
-//- 
+//-
 //- Copyright (c) 2015-2017 Alexander Williams, Unscramble <license@unscramble.jp>
 
 // #backup container
 #jido-page-backup.container-fluid.jido-page-content.jido-page-content-backup(style='display:none')
   .row
-    .col-lg-10.col-md-10.col-sm-12.col-lg-offset-1.col-md-offset-1
+    .col-lg-10.col-md-10.col-sm-12.offset-lg-1.offset-md-1
       h1.page-header Backup/Restore
   .row
-    .col-lg-10.col-md-10.col-sm-12.col-lg-offset-1.col-md-offset-1
-      .panel.panel-default.jido-panel(style='display:none;')
-        .panel-heading
-          h4 Status: 
+    .col-lg-10.col-md-10.col-sm-12.offset-lg-1.offset-md-1
+      .card.jido-panel(style='display:none;')
+        .card-header
+          h4 Status:
             span.label.label-default.jido-data-backup-status ...waiting for backup
           .progress(style='display:none; margin-top: 20px')
-            .progress-bar.progress-bar-striped.active(role='progressbar', aria-valuenow='33', aria-valuemin='0', aria-valuemax='100', style='width: 33%')
+            .progress-bar.bg-striped.active(role='progressbar', aria-valuenow='33', aria-valuemin='0', aria-valuemax='100', style='width: 33%')
               | ...uploading, please wait
           .alert.alert-dismissible.alert-success(style='display:none;', class="backup-alert")
 
   .row
-    .col-lg-4.col-md-4.col-sm-12.col-lg-offset-1.col-md-offset-1
-      .panel.panel-default.jido-panel
-        .panel-heading
-          h3.panel-title
+    .col-lg-4.col-md-4.col-sm-12.offset-lg-1.offset-md-1
+      .card.jido-panel
+        .card-header
+          h3.card-title
             i.fa.icon-floppy
             |  Backup action
-        .panel-body
+        .card-body
           h4 Create, cancel, download, or restore a Backup archive.
           br
           form.backup-form(role='form')
@@ -48,12 +48,12 @@
               input#jido-button-backup-upload.btn.btn-lg.btn-primary.btn-block(type='submit', value='Restore backup', onclick='return event.preventDefault();')
 
     .col-lg-6.col-md-6.col-sm-12
-      .panel.panel-default.jido-panel
-        .panel-heading
-          h3.panel-title
+      .card.jido-panel
+        .card-header
+          h3.card-title
             i.fa.icon-info-circled
             |  Information
-        .panel-body#backupInfo(style='display:none;')
+        .card-body#backupInfo(style='display:none;')
           h4 Download
           .list-group
             a#jido-data-backup-file.list-group-item(href='#')

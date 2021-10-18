@@ -249,6 +249,8 @@ updateButtonListener = ->
     formData.append 'update', $('#update-input[type=file]')[0].files[0]
 
     if formData
+      $('.jido-data-update-status-error-message').html("");
+      $('.jido-data-update-status .label-danger').html("");
       $('.jido-page-content-update .jido-panel').show()
       putFile 'update', "/api/v1/admin/update", formData, (err, result) ->
         unless err

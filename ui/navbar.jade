@@ -1,7 +1,7 @@
 //- This Source Code Form is subject to the terms of the Mozilla Public
 //- License, v. 2.0. If a copy of the MPL was not distributed with this
 //- file, You can obtain one at http://mozilla.org/MPL/2.0/.
-//- 
+//-
 //- Copyright (c) 2015-2016 Alexander Williams, Unscramble <license@unscramble.jp>
 
 #jido-page-navbar(style={display: 'none'})
@@ -9,29 +9,29 @@
 
   //- Menu: Home Update Settings Support
 
-  nav.navbar.navbar-default.navbar-static-top
+  #jido-nav-bar(style='background-color:#2fa4e7; border-color: #1995dc').nav.navbar.navbar-light.navbar-expand-sm.navbar-static-top.navbar-bg-jido
     .container
       .navbar-header
-        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+        button.navbar-toggler.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
           span.sr-only Toggle navigation
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        a.navbar-brand(href='#') Admin Dashboard
+        a.navbar-brand.nav-bar-text(href='#') Admin Dashboard
 
       //- Collect the nav links, forms, and other content for toggling
       #bs-example-navbar-collapse-1.navbar-collapse.collapse
         ul.nav.navbar-nav
-          li#jido-button-home.active
-            a(href='#')
+          li#jido-button-home.nav-item.active
+            a.nav-link(href='#')
               i.fa.icon-home
               |  Home
-          li#jido-button-update
-            a(href='#')
+          li#jido-button-update.nav-item
+            a.nav-link(href='#')
               i.fa.icon-upload-cloud
               |  Update
-          li.dropdown
-            a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+          li.dropdown.nav-item
+            a.dropdown-toggle.nav-link(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
               i.fa.icon-cog-alt
               |  Settings
               span.caret
@@ -61,25 +61,25 @@
                   i.fa.icon-user
                   |  API Token
 
-          li#jido-button-monitor
-            a(href='#')
+          li#jido-button-monitor.nav-item
+            a.nav-link(href='#')
               i.fa.icon-gauge
               |  Monitor
 
-          li#jido-button-support
-            a(href='#')
+          li#jido-button-support.nav-item
+            a.nav-link(href='#')
               i.fa.icon-lifebuoy
               |  Support
 
-        ul.nav.navbar-nav.navbar-right
-          li.jido-versions
-            span.badge.jido-data-platform-version ...fetching
-          li
-            a#jido-button-logout(href='#')
+        ul.nav.navbar-nav.ml-auto
+          li.jido-versions.nav-item
+            label.badge-pill.jido-data-platform-version ...fetching
+          li.nav-item
+            a#jido-button-logout.nav-link(href='#')
               i.fa.icon-logout
               |  Logout
-          li
-            a#jido-button-restart(href='#', data-toggle='modal', data-target='#jido-modal-restart') 
+          li.nav-item
+            a#jido-button-restart.nav-link(href='#', data-toggle='modal', data-target='#jido-modal-restart')
               i.fa.icon-off
               |  Restart
 

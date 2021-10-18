@@ -1,7 +1,7 @@
 //- This Source Code Form is subject to the terms of the Mozilla Public
 //- License, v. 2.0. If a copy of the MPL was not distributed with this
 //- file, You can obtain one at http://mozilla.org/MPL/2.0/.
-//- 
+//-
 //- Copyright (c) 2015-2016 Alexander Williams, Unscramble <license@unscramble.jp>
 
 mixin getNFS()
@@ -64,7 +64,7 @@ mixin helpLOCAL()
   #storage-help-local(style='display:none;')
     h4 Local (disk)
     p This is the default setting.
-    p Data is stored locally on the 2nd disk, in an LVM partition mounted to 
+    p Data is stored locally on the 2nd disk, in an LVM partition mounted to
       code  /data
       | .
 
@@ -72,9 +72,9 @@ mixin helpNFS()
   #storage-help-nfs(style='display:none;')
     h4 NFS
     p Network File System (NFS) storage provides a multitude of configuration options.
-    p NFS 
+    p NFS
       code Mount options
-      |  are fully listed and described in the 
+      |  are fully listed and described in the
       a(href="https://linux.die.net/man/5/nfs") nfs(5)
       |  man page (external link).
 
@@ -84,7 +84,7 @@ mixin helpAOE()
     p AoE storage provides block storage over ethernet.
     p The AoE
       code Device
-      |  is a block device defined by the target server, as described in the 
+      |  is a block device defined by the target server, as described in the
       a(href="https://linux.die.net/man/8/aoe-stat") aoe-stat(8)
       |  man page (external link).
 
@@ -94,7 +94,7 @@ mixin helpISCSI()
     p iSCSI storage provides a SCSI interface over TCP.
     p The iSCSI
       code Target
-      |  is described in the 
+      |  is described in the
       a(href="https://linux.die.net/man/8/iscsiadm") iscsiadm(8)
       |  man page (external link).
 
@@ -106,24 +106,24 @@ mixin helpNBD()
 // #storage container
 #jido-page-storage.container-fluid.jido-page-content.jido-page-content-storage(style='display:none')
   .row
-    .col-lg-10.col-md-10.col-sm-12.col-lg-offset-1.col-md-offset-1
+    .col-lg-10.col-md-10.col-sm-12.offset-lg-1.offset-md-1
       h1.page-header Storage
   .row
-    .col-lg-10.col-md-10.col-sm-12.col-lg-offset-1.col-md-offset-1
-      .panel.panel-default.jido-panel(style='display:none;')
-        .panel-heading
+    .col-lg-10.col-md-10.col-sm-12.offset-lg-1.offset-md-1
+      .card.jido-panel(style='display:none;')
+        .card-header
           .progress(style='margin-top: 20px')
-            .progress-bar.progress-bar-striped.active(role='progressbar', aria-valuenow='33', aria-valuemin='0', aria-valuemax='100', style='width: 33%')
+            .progress-bar.bg-striped.active(role='progressbar', aria-valuenow='33', aria-valuemin='0', aria-valuemax='100', style='width: 33%')
               | ...uploading, please wait
           .alert.alert-dismissible.alert-success.storage-alert(style='display:none;')
   .row
-    .col-lg-4.col-md-4.col-sm-12.col-lg-offset-1.col-md-offset-1
-      .panel.panel-default.jido-panel
-        .panel-heading
-          h3.panel-title
+    .col-lg-4.col-md-4.col-sm-12.offset-lg-1.offset-md-1
+      .card.jido-panel
+        .card-header
+          h3.card-title
             i.fa.icon-database
             |  Storage settings
-        .panel-body
+        .card-body
           h4 Select Storage type and configure Settings for persistent data.
           br
           .alert.alert-info
@@ -146,12 +146,12 @@ mixin helpNBD()
                     input#jido-button-storage-upload.btn.btn-lg.btn-primary.btn-block(type='submit', value='Update', onclick='return event.preventDefault();')
 
     .col-lg-6.col-md-6.col-sm-12
-      .panel.panel-default.jido-panel
-        .panel-heading
-          h3.panel-title
+      .card.jido-panel
+        .card-header
+          h3.card-title
             i.fa.icon-info-circled
             |  Information
-        .panel-body#storageHelp
+        .card-body#storageHelp
           mixin helpLOCAL()
           mixin helpNFS()
           mixin helpAOE()
